@@ -6,7 +6,7 @@ import {
   Text,
   View
 } from 'react-native';
-import { computePositions, getNRows, getRandomColor } from './helpers';
+import { getNRows, getRandomColor, Masonry } from './helpers';
 
 const listViewStyle = {
   flex: 1
@@ -19,6 +19,7 @@ const rowStyle = {
 
 class App extends Component {
   cellPositions: [[number, number]];
+  containerHeight: number;
   state: {
     dataSource: {}
   };
@@ -26,10 +27,13 @@ class App extends Component {
   constructor() {
     super();
     const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2});
+    const dataSource = ds.cloneWithRows(getNRows(100));
+    const masonry = new Masonry(dataSource);
     this.state = {
-      dataSource: ds.cloneWithRows(getNRows(100))
+      dataSource: dataSource
     };
-    this.cellPositions = [[0,0]];
+    this.cellPositions = masonry.getPositions();
+    this.containerHeight = masonry.getContainerHeight();
   }
 
   renderRow = (row: {id: number, height: number}) => {
@@ -49,12 +53,11 @@ class App extends Component {
   }
 
   render() {
-    this.cellPositions = computePositions(this.state.dataSource);
     return (
       <ListView
         dataSource={this.state.dataSource}
         renderRow={(rowData) => this.renderRow(rowData)}
-        contentContainerStyle={listViewStyle}
+        contentContainerStyle={{...listViewStyle, height:this.containerHeight}}
         initialListSize={100}
       />
     );
