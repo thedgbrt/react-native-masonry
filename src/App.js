@@ -6,10 +6,19 @@ import {
   Text,
   View
 } from 'react-native';
-import { getNRows, getRandomColor } from './helpers';
+import { computePositions, getNRows, getRandomColor } from './helpers';
 
+const listViewStyle = {
+  flex: 1
+}
+
+const rowStyle = {
+  position: 'absolute',
+  width: 100
+};
 
 class App extends Component {
+  cellPositions: [[number, number]];
   state: {
     dataSource: {}
   };
@@ -20,26 +29,35 @@ class App extends Component {
     this.state = {
       dataSource: ds.cloneWithRows(getNRows(100))
     };
+    this.cellPositions = [[0,0]];
   }
 
-  renderRow = (height: number) => {
+  renderRow = (row: {id: number, height: number}) => {
+    const pos = this.cellPositions[row.id];
+    const style = {
+      ...rowStyle,
+      backgroundColor: getRandomColor(),
+      height: row.height,
+      left: pos[0],
+      top: pos[1]
+    };
     return (
-      <View style={{
-        backgroundColor: getRandomColor(),
-        height: height
-      }}>
+      <View style={style}>
         <Text>Hello</Text>
       </View>
     );
   }
 
   render() {
+    this.cellPositions = computePositions(this.state.dataSource);
     return (
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={(rowHeight) => this.renderRow(rowHeight)}
+        renderRow={(rowData) => this.renderRow(rowData)}
+        contentContainerStyle={listViewStyle}
+        initialListSize={100}
       />
-    )
+    );
   }
 }
 
