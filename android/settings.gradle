@@ -1,0 +1,3 @@
+rootProject.name = 'masonry'
+
+include ':app'
