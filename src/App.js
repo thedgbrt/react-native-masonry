@@ -47,7 +47,7 @@ class App extends Component {
     };
     return (
       <View style={style}>
-        <Text>Hello</Text>
+        <Text>{row.id}</Text>
       </View>
     );
   }
