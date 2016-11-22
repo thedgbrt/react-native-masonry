@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 
 const Masonry = (props: {children?: React$Element<any>}) => (
-  <View>
+  <ScrollView>
     {props.children}
-  </View>
+  </ScrollView>
 );
 
 export default Masonry;
