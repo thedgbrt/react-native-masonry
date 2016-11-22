@@ -1,29 +1,42 @@
 // @flow
 import React from 'react';
 import 'react-native';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { shallow } from 'enzyme';
 
 import Masonry from './Masonry';
 
 describe('<Masonry />', () => {
   it('Renders correctly', () => {
-    const tree = shallow(<Masonry />);
+    const wrapper = shallow(<Masonry />);
   });
 
   it('Is scrollable', () => {
-    const tree = shallow(
+    const wrapper = shallow(
       <Masonry />
     );
-    expect(tree.equals(<ScrollView />)).toBe(true);
+    expect(wrapper.equals(<ScrollView />)).toBe(true);
   });
 
-  it('Renders its children', () => {
-    const tree = shallow(
+  it('Renders children', () => {
+    const wrapper = shallow(
       <Masonry>
         <Text>Hello</Text>
       </Masonry>
     );
-    expect(tree.contains(<Text>Hello</Text>)).toBe(true);
+    expect(wrapper.contains(<Text>Hello</Text>)).toBe(true);
   });
+
+  it('Each child gets wrapped in a View', () => {
+    const wrapper = shallow(
+      <Masonry>
+        <Text>Hello</Text>
+        <Text>How are you doing today?</Text>
+      </Masonry>
+    );
+    wrapper.children().map((child) => {
+      expect(child.is(View)).toBe(true);
+    });
+  });
+  
 });
