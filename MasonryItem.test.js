@@ -19,4 +19,9 @@ describe('<MasonryItem />', () => {
     expect(wrapper.children().length).toBe(1);
   });
 
+  it('Has a set width', () => {
+    const wrapper = shallow(<MasonryItem />);
+    expect("width" in wrapper.prop("style")).toBe(true);
+    expect(wrapper.prop("style").width).toBeGreaterThan(0);
+  });
 });
