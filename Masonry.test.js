@@ -1,12 +1,11 @@
 // @flow
 import React from 'react';
 import 'react-native';
-import renderer from 'react-test-renderer';
+import { View } from 'react-native';
+import { shallow } from 'enzyme';
 
 import Masonry from './Masonry';
 
 it('Renders correctly', () => {
-  const tree = renderer.create(
-    <Masonry />
-  );
+  const tree = shallow(<Masonry />);
 });
