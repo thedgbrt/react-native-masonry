@@ -1,9 +1,21 @@
 {
 	"name": "react-native-masonry",
 	"version": "0.0.1",
-	"private": true,
+	"description": "Masonry layout component for React Native",
+	"author": "Dagobert Renouf <dagobert.king@gmail.com> (http://www.dgbrt.fr/en)",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thedgbrt/react-native-masonry"
+	},
+	"keywords": [
+		"grid",
+		"masonry",
+		"image",
+		"gallery"
+	],
+	"main": "Masonry.js",
 	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
 	},
 	"dependencies": {
@@ -13,6 +25,7 @@
 	"devDependencies": {
 		"babel-jest": "17.0.2",
 		"babel-preset-react-native": "1.9.0",
+		"flow-bin": "0.33",
 		"jest": "17.0.3",
 		"jest-react-native": "17.0.3",
 		"react-test-renderer": "~15.3.1"
