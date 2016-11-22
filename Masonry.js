@@ -1,6 +1,7 @@
 // @flow
 import React, { Children, Component } from 'react';
 import { ScrollView, View } from 'react-native';
+import MasonryItem from './MasonryItem';
 
 class Masonry extends Component {
   props: {
@@ -8,10 +9,10 @@ class Masonry extends Component {
   };
 
   renderChildren = () => (
-    Children.map(this.props.children, (el) => (
-      <View>
-        {el}
-      </View>
+    Children.map(this.props.children, (element) => (
+      <MasonryItem>
+        {element}
+      </MasonryItem>
     ))
   );
 

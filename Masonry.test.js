@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
 import 'react-native';
-import { ScrollView, Text, View } from 'react-native';
 import { shallow } from 'enzyme';
-
+import { ScrollView, Text, View } from 'react-native';
 import Masonry from './Masonry';
+import MasonryItem from './MasonryItem';
 
 describe('<Masonry />', () => {
   it('Renders correctly', () => {
@@ -24,10 +24,10 @@ describe('<Masonry />', () => {
         <Text>Hello</Text>
       </Masonry>
     );
-    expect(wrapper.contains(<Text>Hello</Text>)).toBe(true);
+    expect(wrapper.children().length).toBe(1);
   });
 
-  it('Each child gets wrapped in a View', () => {
+  it('Each child gets wrapped in MasonryItem', () => {
     const wrapper = shallow(
       <Masonry>
         <Text>Hello</Text>
@@ -35,8 +35,7 @@ describe('<Masonry />', () => {
       </Masonry>
     );
     wrapper.children().map((child) => {
-      expect(child.is(View)).toBe(true);
+      expect(child.is(MasonryItem)).toBe(true);
     });
   });
-  
 });
