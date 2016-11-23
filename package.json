@@ -39,6 +39,10 @@
 		"screenshot.png"
 	],
 	"jest": {
-		"preset": "jest-react-native"
+		"preset": "jest-react-native",
+		"coveragePathIgnorePatterns": ["/node_modules/", "/demo/"],
+		"modulePathIgnorePatterns": ["/demo/"],
+		"testPathIgnorePatterns": ["/node_modules/", "/demo/"],
+		"transformIgnorePatterns": ["/demo/"]
 	}
 }
