@@ -1,4 +1,6 @@
 # React Native Masonry - pre-alpha
+![Travis Build Status](https://travis-ci.org/thedgbrt/react-native-masonry.svg?branch=master)
+
 This repository aims to reproduce the [Masonry](https://github.com/desandro/masonry) layout in React Native.
 
 It is in pre-alpha version, not yet available on NPM.
