@@ -1,8 +1,5 @@
 [ignore]
 
-# Ignore the demo subdir
-<PROJECT_ROOT>/demo/.*
-
 # We fork some components by platform.
 .*/*[.]android.js
 
