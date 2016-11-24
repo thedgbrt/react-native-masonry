@@ -14,8 +14,9 @@
 		"image",
 		"gallery"
 	],
-	"main": "Masonry.js",
+	"main": "lib/Masonry.js",
 	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
 		"test": "jest"
 	},
 	"devDependencies": {
@@ -34,8 +35,7 @@
 	"files": [
 		"LICENSE",
 		"README.md",
-		"Masonry.js",
-		"MasonryItem.js",
+		"lib/*",
 		"screenshot.png"
 	],
 	"jest": {
