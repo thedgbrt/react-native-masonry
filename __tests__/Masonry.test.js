@@ -20,7 +20,7 @@ describe('<Masonry />', () => {
     expect(wrapper.children().length).toBe(1);
   });
 
-  it('Wrap each child in MasonryItem', () => {
+  it('Wraps each given child element in MasonryItem', () => {
     const wrapper = shallow(
       <Masonry>
         <Text>Hello</Text>
@@ -31,4 +31,22 @@ describe('<Masonry />', () => {
       expect(child.is(MasonryItem)).toBe(true);
     });
   });
+
+  it('Gives the same width to each child', () => {
+    const wrapper = shallow(
+      <Masonry>
+        <View></View>
+        <Text>How are you doing today?</Text>
+        <View></View>
+        <Text>How are you doing today?</Text>
+      </Masonry>
+    );
+    wrapper.children().map((child) => {
+      expect(child.prop("width")).toBeDefined();
+    });
+  });
+
+  // it('Updates state.width from onLayout event', () => {
+  //   return null;
+  // });
 });

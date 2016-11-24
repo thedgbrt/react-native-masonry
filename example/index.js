@@ -11,6 +11,8 @@ const MasonryExample  = () => (
   <Masonry>
     <Text>Hello</Text>
     <Text>GoodBye</Text>
+    <Text>Hello</Text>
+    <Text>GoodBye</Text>
   </Masonry>
 );
 
