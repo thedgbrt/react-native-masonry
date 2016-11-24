@@ -1,23 +1,48 @@
 {
 	"name": "react-native-masonry",
 	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "node node_modules/react-native/local-cli/cli.js start",
-		"test": "jest"
+	"description": "Masonry layout component for React Native",
+	"author": "Dagobert Renouf <dagobert.king@gmail.com> (http://www.dgbrt.fr/en)",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thedgbrt/react-native-masonry"
 	},
-	"dependencies": {
-		"react": "~15.3.1",
-		"react-native": "0.37.0"
+	"keywords": [
+		"grid",
+		"masonry",
+		"image",
+		"gallery"
+	],
+	"main": "Masonry.js",
+	"scripts": {
+		"test": "jest"
 	},
 	"devDependencies": {
 		"babel-jest": "17.0.2",
 		"babel-preset-react-native": "1.9.0",
+		"enzyme": "^2.6.0",
+		"flow-bin": "0.33",
 		"jest": "17.0.3",
 		"jest-react-native": "17.0.3",
+		"react": "~15.3.1",
+		"react-addons-test-utils": "^15.4.0",
+		"react-dom": "^15.4.0",
+		"react-native": "0.37.0",
 		"react-test-renderer": "~15.3.1"
 	},
+	"files": [
+		"LICENSE",
+		"README.md",
+		"Masonry.js",
+		"MasonryItem.js",
+		"screenshot.png"
+	],
 	"jest": {
-		"preset": "jest-react-native"
+		"preset": "jest-react-native",
+		"coveragePathIgnorePatterns": ["/node_modules/", "/demo/"],
+		"modulePathIgnorePatterns": ["/demo/"],
+		"testPathIgnorePatterns": ["/node_modules/", "/demo/"],
+		"transformIgnorePatterns": ["/demo/"]
 	}
 }
