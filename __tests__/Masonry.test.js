@@ -11,13 +11,6 @@ describe('<Masonry />', () => {
     const wrapper = shallow(<Masonry />);
   });
 
-  it('Is scrollable', () => {
-    const wrapper = shallow(
-      <Masonry />
-    );
-    expect(wrapper.equals(<ScrollView />)).toBe(true);
-  });
-
   it('Renders children', () => {
     const wrapper = shallow(
       <Masonry>
@@ -27,7 +20,7 @@ describe('<Masonry />', () => {
     expect(wrapper.children().length).toBe(1);
   });
 
-  it('Each child gets wrapped in MasonryItem', () => {
+  it('Wrap each child in MasonryItem', () => {
     const wrapper = shallow(
       <Masonry>
         <Text>Hello</Text>
