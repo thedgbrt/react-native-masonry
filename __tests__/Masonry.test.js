@@ -46,7 +46,9 @@ describe('<Masonry />', () => {
     });
   });
 
-  // it('Updates state.width from onLayout event', () => {
-  //   return null;
-  // });
+  it('Updates state.width on layout event', () => {
+    const wrapper = shallow(<Masonry/>);
+    wrapper.first().simulate("layout", { nativeEvent: { layout: { width: 500 } } });
+    expect(wrapper.state().width).toBe(500);
+  });
 });
