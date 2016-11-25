@@ -8,12 +8,12 @@ import MasonryItem from '../lib/MasonryItem';
 
 describe('<Masonry />', () => {
   it('Renders correctly', () => {
-    const wrapper = shallow(<Masonry />);
+    const wrapper = shallow(<Masonry columns={3} />);
   });
 
   it('Renders children', () => {
     const wrapper = shallow(
-      <Masonry>
+      <Masonry columns={3}>
         <Text>Hello</Text>
       </Masonry>
     );
@@ -22,7 +22,7 @@ describe('<Masonry />', () => {
 
   it('Wraps each given child element in MasonryItem', () => {
     const wrapper = shallow(
-      <Masonry>
+      <Masonry columns={3}>
         <Text>Hello</Text>
         <Text>How are you doing today?</Text>
       </Masonry>
@@ -34,7 +34,7 @@ describe('<Masonry />', () => {
 
   it('Gives the same width to each child', () => {
     const wrapper = shallow(
-      <Masonry>
+      <Masonry columns={3}>
         <View></View>
         <Text>How are you doing today?</Text>
         <View></View>
@@ -47,8 +47,26 @@ describe('<Masonry />', () => {
   });
 
   it('Updates state.width on layout event', () => {
-    const wrapper = shallow(<Masonry/>);
+    const wrapper = shallow(<Masonry columns={3}/>);
     wrapper.first().simulate("layout", { nativeEvent: { layout: { width: 500 } } });
     expect(wrapper.state().width).toBe(500);
+  });
+
+  it('Child width is computed from state.width and props.columns', () => {
+    const wrapper = shallow(
+      <Masonry columns={3}>
+        <Text>I am a child component</Text>
+      </Masonry>
+    );
+    const child = wrapper.children().first();
+
+    const width1 = wrapper.children().first().prop("width");
+    wrapper.setState({ width: 400 });
+    const width2 = wrapper.children().first().prop("width");
+    wrapper.setProps({ columns: 2 });
+    const width3 = wrapper.children().first().prop("width");
+
+    expect(width2).not.toBe(width1);
+    expect(width3).not.toBe(width2);
   });
 });

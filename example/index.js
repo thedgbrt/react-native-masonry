@@ -8,7 +8,7 @@ import { Text } from 'react-native';
 import Masonry from '../lib/Masonry';
 
 const MasonryExample  = () => (
-  <Masonry>
+  <Masonry columns={3}>
     <Text>Hello</Text>
     <Text>GoodBye</Text>
     <Text>Hello</Text>
