@@ -26,6 +26,7 @@
 		"flow-bin": "0.33",
 		"jest": "17.0.3",
 		"jest-react-native": "17.0.3",
+		"lodash": "^4.17.2",
 		"react": "~15.3.1",
 		"react-addons-test-utils": "^15.4.0",
 		"react-dom": "^15.4.0",
@@ -40,9 +41,19 @@
 	],
 	"jest": {
 		"preset": "jest-react-native",
-		"coveragePathIgnorePatterns": ["/node_modules/", "/demo/"],
-		"modulePathIgnorePatterns": ["/demo/"],
-		"testPathIgnorePatterns": ["/node_modules/", "/demo/"],
-		"transformIgnorePatterns": ["/demo/"]
+		"coveragePathIgnorePatterns": [
+			"/node_modules/",
+			"/demo/"
+		],
+		"modulePathIgnorePatterns": [
+			"/demo/"
+		],
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/demo/"
+		],
+		"transformIgnorePatterns": [
+			"/demo/"
+		]
 	}
 }
