@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Masonry from '../lib/Masonry';
+import MasonryWrapper from '../lib/MasonryWrapper';
 
 const sentences = [
   "Hello",
@@ -21,13 +21,13 @@ for (let i = 0; i < 30; i++) {
 }
 
 const MasonryExample  = () => (
-  <Masonry columns={3}>
+  <MasonryWrapper columns={3}>
     {lotOfSentences.map((text, i) => (
       <View style={styles.cell} key={i}>
         <Text>{text}</Text>
       </View>
     ))}
-  </Masonry>
+  </MasonryWrapper>
 );
 
 
