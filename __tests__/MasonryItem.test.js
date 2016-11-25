@@ -25,8 +25,4 @@ describe('<MasonryItem />', () => {
     const styleDef = _.find(wrapper.prop("style"), "width");
     expect(styleDef.width).toBe(200);
   });
-
-  // it('Only renders if width > 0', () => {
-  //   return null;
-  // });
 });

@@ -11,22 +11,34 @@ describe('<Masonry />', () => {
     const wrapper = shallow(<Masonry columns={3} />);
   });
 
-  it('Renders children', () => {
+  it('Doesn\'t render children if state.width == 0', () => {
     const wrapper = shallow(
       <Masonry columns={3}>
         <Text>Hello</Text>
       </Masonry>
     );
+    wrapper.setState({ width: 0 });
+    expect(wrapper.children().length).toBe(0);
+  });
+
+  it('Renders children if state.width > 0', () => {
+    const wrapper = shallow(
+      <Masonry columns={3}>
+        <Text>Hello</Text>
+      </Masonry>
+    );
+    wrapper.setState({ width: 150 });
     expect(wrapper.children().length).toBe(1);
   });
 
-  it('Wraps each given child element in MasonryItem', () => {
+  it('Wraps each given child in MasonryItem', () => {
     const wrapper = shallow(
       <Masonry columns={3}>
         <Text>Hello</Text>
         <Text>How are you doing today?</Text>
       </Masonry>
     );
+    wrapper.setState({ width: 400 });
     wrapper.children().map((child) => {
       expect(child.is(MasonryItem)).toBe(true);
     });
@@ -41,6 +53,7 @@ describe('<Masonry />', () => {
         <Text>How are you doing today?</Text>
       </Masonry>
     );
+    wrapper.setState({ width: 300 });
     wrapper.children().map((child) => {
       expect(child.prop("width")).toBeDefined();
     });
