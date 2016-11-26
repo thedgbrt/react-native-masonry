@@ -6,47 +6,34 @@ import { Text, View } from 'react-native';
 import Grid from '../lib/Grid';
 import Cell from '../lib/Cell';
 
+const mockData = [
+  { text: "Hello" },
+  { text: "GoodBye" }
+];
+
 describe('<Grid />', () => {
   it('Renders correctly', () => {
-    const wrapper = shallow(<Grid columns={1} wrapperWidth={200} />);
+    const wrapper = shallow(<Grid columns={1} data={mockData} wrapperWidth={200} />);
   });
 
-  it('Wraps each child in Cell', () => {
-    const wrapper = shallow(
-      <Grid columns={4} wrapperWidth={300}>
-        <Text>Hello</Text>
-        <Text>How are you doing today?</Text>
-      </Grid>
-    );
+  it('Renders a Cell for each data item', () => {
+    const wrapper = shallow(<Grid columns={4} wrapperWidth={300} data={mockData} />);
     expect(wrapper.childAt(0).is(Cell)).toBe(true);
     expect(wrapper.childAt(1).is(Cell)).toBe(true);
   });
 
-  it('Gives children a width prop', () => {
-    const wrapper = shallow(
-      <Grid columns={1} wrapperWidth={400}>
-        <View></View>
-      </Grid>
-    );
+  it('Gives cells a width prop', () => {
+    const wrapper = shallow(<Grid columns={1} wrapperWidth={400} data={mockData} />);
     expect(wrapper.childAt(0).prop("width")).toBeGreaterThan(-1);
   });
 
-  it('Gives the same width to each child', () => {
-    const wrapper = shallow(
-      <Grid columns={5} wrapperWidth={500}>
-        <View></View>
-        <Text>I am a long sentence. My purpose is to vary the kind of content that is tested.</Text>
-      </Grid>
-    );
+  it('Gives the same width to each cell', () => {
+    const wrapper = shallow(<Grid columns={5} wrapperWidth={500} data={mockData} />);
     expect(wrapper.childAt(0).prop("width")).toEqual(wrapper.childAt(1).prop("width"));
   });
 
-  it('Child width is computed from props width and columns', () => {
-    const wrapper = shallow(
-      <Grid columns={7} wrapperWidth={600}>
-        <Text>I am a child component</Text>
-      </Grid>
-    );
+  it('Cell width is computed from props width and columns', () => {
+    const wrapper = shallow(<Grid columns={7} wrapperWidth={600} data={mockData} />);
     const child = wrapper.children().first();
 
     const width1 = wrapper.children().first().prop("width");
