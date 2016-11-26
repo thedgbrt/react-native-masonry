@@ -7,9 +7,10 @@ import { Text } from 'react-native';
 import Cell from '../lib/Cell';
 
 const mockProps = {
-  width: 100,
+  position: {x:0, y:0},
+  storeCellHeight: jest.fn(),
   text: "hello",
-  storeCellHeight: jest.fn()
+  width: 100
 };
 
 describe('<Cell />', () => {

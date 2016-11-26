@@ -61,7 +61,7 @@ describe('<Grid />', () => {
     expect(wrapper.childAt(2).last().prop("afterLayout")).toBeDefined();
   });
 
-  // it('Updates state.positions on "afterLayoutLastCell" event', () => {
-  //   return null;
+  // it('Updates state.cellsPositions on "_onLayoutCells" event', () => {
+  //   expect(undefined).toBeDefined();
   // });
 });
