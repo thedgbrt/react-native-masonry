@@ -6,19 +6,33 @@ import * as _ from 'lodash';
 import { Text } from 'react-native';
 import Cell from '../lib/Cell';
 
+const mockProps = {
+  width: 100,
+  text: "hello",
+  storeCellHeight: jest.fn()
+};
+
 describe('<Cell />', () => {
   it('Renders correctly', () => {
-    const wrapper = shallow(<Cell width={10} text="hello" />);
+    const wrapper = shallow(<Cell {...mockProps} />);
   });
 
   it('Renders text data', () => {
-    const wrapper = shallow(<Cell width={100} text="hello" />);
+    const wrapper = shallow(<Cell {...mockProps} />);
     expect(wrapper.childAt(0).is(Text)).toBe(true);
   });
 
   it('Sets the width style property based on props', () => {
-    const wrapper = shallow(<Cell width={200} text="hello" />);
+    const wrapper = shallow(<Cell {...mockProps} />);
     const styleDef = _.find(wrapper.prop("style"), "width");
-    expect(styleDef.width).toBe(200);
+    expect(styleDef.width).toBe(100);
   });
+
+  it('Layout event triggers props.afterLayout()', () => {
+    const afterLayoutFunc = jest.fn();
+    const wrapper = shallow(
+      <Cell {...mockProps} afterLayout={() => afterLayoutFunc(true) } />);
+    wrapper.first().simulate("layout");
+    expect(afterLayoutFunc).toHaveBeenCalled();
+  })
 });
