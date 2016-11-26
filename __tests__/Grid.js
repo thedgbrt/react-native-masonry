@@ -3,49 +3,49 @@ import React from 'react';
 import 'react-native';
 import { shallow } from 'enzyme';
 import { Text, View } from 'react-native';
-import Masonry from '../lib/Masonry';
-import MasonryItem from '../lib/MasonryItem';
+import Grid from '../lib/Grid';
+import Cell from '../lib/Cell';
 
-describe('<Masonry />', () => {
+describe('<Grid />', () => {
   it('Renders correctly', () => {
-    const wrapper = shallow(<Masonry columns={1} wrapperWidth={200} />);
+    const wrapper = shallow(<Grid columns={1} wrapperWidth={200} />);
   });
 
-  it('Wraps each child in MasonryItem', () => {
+  it('Wraps each child in Cell', () => {
     const wrapper = shallow(
-      <Masonry columns={4} wrapperWidth={300}>
+      <Grid columns={4} wrapperWidth={300}>
         <Text>Hello</Text>
         <Text>How are you doing today?</Text>
-      </Masonry>
+      </Grid>
     );
-    expect(wrapper.childAt(0).is(MasonryItem)).toBe(true);
-    expect(wrapper.childAt(1).is(MasonryItem)).toBe(true);
+    expect(wrapper.childAt(0).is(Cell)).toBe(true);
+    expect(wrapper.childAt(1).is(Cell)).toBe(true);
   });
 
   it('Gives children a width prop', () => {
     const wrapper = shallow(
-      <Masonry columns={1} wrapperWidth={400}>
+      <Grid columns={1} wrapperWidth={400}>
         <View></View>
-      </Masonry>
+      </Grid>
     );
     expect(wrapper.childAt(0).prop("width")).toBeGreaterThan(-1);
   });
 
   it('Gives the same width to each child', () => {
     const wrapper = shallow(
-      <Masonry columns={5} wrapperWidth={500}>
+      <Grid columns={5} wrapperWidth={500}>
         <View></View>
         <Text>I am a long sentence. My purpose is to vary the kind of content that is tested.</Text>
-      </Masonry>
+      </Grid>
     );
     expect(wrapper.childAt(0).prop("width")).toEqual(wrapper.childAt(1).prop("width"));
   });
 
   it('Child width is computed from props width and columns', () => {
     const wrapper = shallow(
-      <Masonry columns={7} wrapperWidth={600}>
+      <Grid columns={7} wrapperWidth={600}>
         <Text>I am a child component</Text>
-      </Masonry>
+      </Grid>
     );
     const child = wrapper.children().first();
 
