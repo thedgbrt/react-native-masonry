@@ -5,37 +5,26 @@
 
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import MasonryWrapper from '../lib/MasonryWrapper';
+import Masonry from '../lib/Masonry';
 
-const sentences = [
-  "Hello",
-  "GoodBye",
-  "How are you doing today? I'm fine thank you",
-  "Who's a good boy?"
+const data = [
+  { text: "Hello" },
+  { text: "GoodBye" },
+  { text: "How are you doing today? I'm fine thank you" },
+  { text: "Who's a good boy?" }
 ];
 
-let lotOfSentences = [];
+let lotsOfData = [];
 
 for (let i = 0; i < 30; i++) {
-  lotOfSentences.push(...sentences);
+  lotsOfData.push(...data);
 }
 
 const MasonryExample  = () => (
-  <MasonryWrapper columns={3}>
-    {lotOfSentences.map((text, i) => (
-      <View style={styles.cell} key={i}>
-        <Text>{text}</Text>
-      </View>
-    ))}
-  </MasonryWrapper>
+  <Masonry
+    columns={3}
+    data={lotsOfData}
+  />
 );
-
-
-const styles = StyleSheet.create({
-  cell: {
-    borderColor: "black",
-    borderWidth: 1
-  }
-});
 
 export default MasonryExample;
