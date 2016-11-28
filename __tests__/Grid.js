@@ -13,6 +13,7 @@ const mockData = [
 ];
 
 const mockProps = {
+  afterLayout: jest.fn(),
   columns:3,
   wrapperWidth:300,
   data:mockData

@@ -17,24 +17,29 @@ const mockPosResults = [
 describe('Compute positions', () => {
   it('If height is empty, returns array of single default coordinates object', () => {
     const pos = computeCellPositions([], mockWidth, mockColumns);
-    expect(pos[0].x).toEqual(0);
-    expect(pos[0].y).toEqual(0);
+    expect(pos.positions[0].x).toEqual(0);
+    expect(pos.positions[0].y).toEqual(0);
   });
 
   it('Returns a coordinates object for each height value', () => {
     const pos = computeCellPositions(mockCellsHeights, mockWidth, mockColumns);
-    expect(pos.length).toEqual(8);
-    for(i=0; i<pos.length; i++) {
-      expect(pos[i].x).toBeDefined();
-      expect(pos[i].y).toBeDefined();
+    expect(pos.positions.length).toEqual(8);
+    for(i=0; i<pos.positions.length; i++) {
+      expect(pos.positions[i].x).toBeDefined();
+      expect(pos.positions[i].y).toBeDefined();
     }
   });
 
   it('Calculates positions properly', () => {
     const pos = computeCellPositions(mockCellsHeights, mockWidth, mockColumns);
     for(i=0; i<pos.length; i++) {
-      expect(pos[i].x).toEqual(mockPosResults[i].x);
-      expect(pos[i].y).toEqual(mockPosResults[i].y);
+      expect(pos.positions[i].x).toEqual(mockPosResults[i].x);
+      expect(pos.positions[i].y).toEqual(mockPosResults[i].y);
     }
+  });
+
+  it('Returns the total height of the grid', () => {
+    const pos = computeCellPositions(mockCellsHeights, mockWidth, mockColumns);
+    expect(pos.end).toEqual(375);
   });
 });
