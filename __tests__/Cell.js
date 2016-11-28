@@ -8,7 +8,7 @@ import Cell from '../lib/Cell';
 
 const mockProps = {
   position: {x:0, y:0},
-  storeCellHeight: jest.fn(),
+  afterLayout: jest.fn(),
   text: "hello",
   width: 100
 };
@@ -28,12 +28,4 @@ describe('<Cell />', () => {
     const styleDef = _.find(wrapper.prop("style"), "width");
     expect(styleDef.width).toBe(100);
   });
-
-  it('Layout event triggers props.afterLayout()', () => {
-    const afterLayoutFunc = jest.fn();
-    const wrapper = shallow(
-      <Cell {...mockProps} afterLayout={() => afterLayoutFunc(true) } />);
-    wrapper.first().simulate("layout");
-    expect(afterLayoutFunc).toHaveBeenCalled();
-  })
 });

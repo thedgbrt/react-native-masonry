@@ -54,14 +54,5 @@ describe('<Grid />', () => {
     expect(width3).not.toBe(width2);
   });
 
-  it('Assigns afterLayout to last cell only', () => {
-    const wrapper = shallow(<Grid {...mockProps} />);
-    expect(wrapper.childAt(0).prop("afterLayout")).toBeUndefined();
-    expect(wrapper.childAt(1).prop("afterLayout")).toBeUndefined();
-    expect(wrapper.childAt(2).last().prop("afterLayout")).toBeDefined();
-  });
-
-  // it('Updates state.cellsPositions on "_onLayoutCells" event', () => {
-  //   expect(undefined).toBeDefined();
-  // });
+  // it('Updates cells position on last _onLayoutCells')
 });
